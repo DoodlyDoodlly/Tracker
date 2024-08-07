@@ -1,6 +1,6 @@
 'use client'
 import {useState, useEffect} from 'react'
-import {firestore} from "@/firebase"
+import {firestore} from "./firebase"
 import {Box,Stack, Typography,Modal, TextField, Button} from '@mui/material'
 import {collection, getDocs,query,deleteDoc,doc,setDoc,getDoc} from 'firebase/firestore'
 
@@ -25,7 +25,7 @@ export default function Home() {
  }
 //add
 const addItem = async (item) =>{
-  const docRef = doc(collection(firestore, 'inventory'), item)
+  const docRef = doc(firestore, 'inventory', item);
   const docSnap = await getDoc(docRef)
    if(docSnap.exists()){
      const {quantity} = docSnap.data()
@@ -40,7 +40,7 @@ const addItem = async (item) =>{
 
 //remove
  const removeItem = async (item) =>{
-   const docRef = doc(collection(firestore, 'inventory'), item)
+  const docRef = doc(firestore, 'inventory', item);
    const docSnap = await getDoc(docRef)
    if(docSnap.exists()){
      const {quantity} = docSnap.data()
