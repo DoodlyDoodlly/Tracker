@@ -1,8 +1,8 @@
 'use client'
-import {useState, useEffect} from 'react'
-import {firestore} from "./firebase"
-import {Box,Stack, Typography,Modal, TextField, Button} from '@mui/material'
-import {collection, getDocs,query,deleteDoc,doc,setDoc,getDoc} from 'firebase/firestore'
+import { firestore } from "@/firebase";
+import { Box, Button, Modal, Stack, TextField, Typography } from "@mui/material";
+import { collection, deleteDoc, doc, getDoc, getDocs, query, setDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
 
 
 export default function Home() {
@@ -130,7 +130,7 @@ const addItem = async (item) =>{
      <Stack width="800px" height="300px" spacing={2} overflow={'auto'}>
      {
          inventory.map(({name, quantity}) =>{
-           <Box
+           return <Box
              key={name}
              width="100%"
              minHeight="150px"
